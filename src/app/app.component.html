@@ -1,30 +1,28 @@
 <!-- Ranga date:13/07/2023 Form Template  done -->
 <!-- nagireddy date:13/07/2023 validation to done -->
-
+<form #signupForm="ngForm" >
 <div class="p-3 mb-2 bg-secondary text-white rounded ">
     <form class="row g-3 "  >
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Email:</label>
-      <input type="email" class="form-control" [(ngModel)]="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$*" #emailValidation ="ngModel" id="inputEmail4" placeholder="Enter Valid Email" >
+      <input type="email" class="form-control" [(ngModel)]="Email" name="email" pattern="[a-z0-9]+@[a-z.]*" #emailValidation ="ngModel" id="inputEmail4" placeholder="Enter Valid Email" required>
     </div>
  
-<span *ngIf="emailValidation.errors &&(emailValidation.touched || emailValidation.dirty)" > 
+<span *ngIf="emailValidation.invalid" > enter valid mail
 </span>
+
     <div class="col-md-6">
       <label for="inputPassword4" class="form-label">Password:</label>
-      <input type="password" class="form-control" id="inputPassword4" [(ngModel)]="password"  #paswordValidation="ngModel"   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$*" placeholder="Enter Password" required>
-      <!-- <span
-
-      *ngIf="passwordValidation.errors &&(paswordValidation.touched || paswordValidation.dirty)"> 
-    </span> -->
+      <input type="password" class="form-control" id="inputPassword4" name="password" [(ngModel)]="Password"  #paswordValidation="ngModel"    placeholder="Enter Password" required>
+    
   
     </div>
     <div class="col-6">
       <label for="inputAddress" class="form-label"> Present Address: </label>
-      <input type="text" class="form-control"  #addressValidation="ngModel" [(ngModel)]="PresentAddress" placeholder="Enter Present Address " required>
+      <input type="text" class="form-control"  #addressValidation="ngModel" name="PresentAddress" [(ngModel)]="PresentAddress" placeholder="Enter Present Address ">
       <span
 
-      *ngIf="(addressValidation.touched || addressValidation.dirty)"> 
+      *ngIf="PresentAddress.invalid"> enter valid present address
     </span>
   
         </div>
@@ -32,10 +30,10 @@
    
     <div class="col-6">
       <label for="inputAddress2" class="form-label"> Permanent Address: </label>
-      <input type="text" class="form-control" id="inputAddress2" [(ngModel)]="PermanentAddress" #PermanentaddressValidation="ngModel" placeholder="Enter Permanent Address" required>
+      <input type="text" class="form-control" id="inputAddress2" [(ngModel)]="PermanentAddress" name="PermanentAddress" #PermanentaddressValidation="ngModel" placeholder="Enter Permanent Address">
       <span
 
-    *ngIf="PermanentaddressValidation.touched && PermanentaddressValidation.invalid" style="color:red;"> 
+      *ngIf="PermanentaddressValidation.invalid"style="color:red;"> enter valid permanent address
     </span>
 
       </div>
@@ -43,11 +41,11 @@
     
     <div class="col-md-4">
       <label for="inputCity" class="form-label">City:</label>
-      <input type="text" class="form-control" id="inputCity" placeholder="City">
+      <input type="text" class="form-control" id="inputCity" name="City" placeholder="City">
     </div>
     <div class="col-md-4">
       <label for="inputState" class="form-label">State: </label>
-      <select id="inputState" class="form-select"  [(ngModel)]="state" #stateValidation="ngModel" required>
+      <select id="inputState" class="form-select"  [(ngModel)]="State" name="State" #stateValidation="ngModel" >
         <option selected> Select State</option>
               <option value="Andhra Pradesh">Andhra Pradesh</option>
               <option value="Karnataka">Karnataka</option>
@@ -58,22 +56,23 @@
       </select>
       <span
 
-      *ngIf="stateValidation.touched && stateValidation.invalid" style="color:red;"> 
+      *ngIf="stateValidation.touched && stateValidation.invalid" style="color:red;"> enter valid state
     </span>
     </div>
     <div class="col-md-4">
       <label for="inputZip" class="form-label">Pin Code:</label>
-      <input type="text" class="form-control" id="inputZip" placeholder="Pin Code" required>
+      <input type="text" class="form-control" id="inputZip" name="pincode"placeholder="Pincode">
     </div>
     <div class="col-12">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <input class="form-check-input" type="checkbox" id="gridCheck" >
         <label class="form-check-label" for="gridCheck">
           Check me out
         </label>
       </div>
     </div>
     <div class="col-12">
-      <button type="submit" class="btn btn-primary" >Sign in</button>
+      <button type="button" (click)="Onsubmit()"  class="btn btn-primary"  >Sign in</button>
     </div>
+    
   </form>

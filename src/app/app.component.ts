@@ -9,4 +9,18 @@ export class AppComponent {
   title = 'github1';
   PresentAddress:any="";
   PermanentAddress:any="";
+  City:any="";
+  State:any="";
+  Pincode:string="";
+  Password:any="";
+  Email:any="";
+
+users:any={};
+  formValidation: any;
+
+  Onsubmit(){
+   alert("data saved");
+  }
+  
 }
+
