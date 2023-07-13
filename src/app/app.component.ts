@@ -14,6 +14,7 @@ export class AppComponent {
   Pincode:string="";
   Password:any="";
   Email:any="";
+  checkbox:any="";
  
 users:any={};
   formValidation: any;

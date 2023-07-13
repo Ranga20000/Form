@@ -4,6 +4,30 @@
 } */
 .p-3 {
     border: 1px solid red;
-    border-radius: 50px solid red;
-    margin: 30px;
+    border-radius: 50px;
+    background-image: url("../assets/photo.png");
+  
+    /* margin: 30px; */
+    height: 100%;
+width: 85%;
+margin-left: 100px;
+box-shadow: 5px 10px #888888;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#top{
+    padding: 20px;
+    justify-content: center;
+    padding-bottom: 20%;
+}
+.container{
+    
+    justify-content: center;
+    margin-left: 50%;
+    width: 50%;
+ 
+   
+  
 }
