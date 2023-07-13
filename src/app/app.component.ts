@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'github1';
+  PresentAddress:any="";
+  PermanentAddress:any="";
 }
