@@ -12,12 +12,22 @@
     </div>
     <div class="col-6">
       <label for="inputAddress" class="form-label"> Present Address: </label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="Enter Present Address ">
+      <input type="text" class="form-control" #addressValidation id="inputAddress" placeholder="Enter Present Address ">
     </div>
+    <div
+
+    *ngIf="addressValidation.touched && addressValidation.invalid" style="color:red;"> Address required*</div>
+
+      </div>
     <div class="col-6">
       <label for="inputAddress2" class="form-label"> Permanent Address: </label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Enter Permanent Address">
+      <input type="text" class="form-control" id="inputAddress2" #PermanentaddressValidation placeholder="Enter Permanent Address">
     </div>
+    <div
+
+    *ngIf="PermanentaddressValidation.touched && Permanent addressValidation.invalid" style="color:red;"> Full Name is required*</div>
+
+      </div>
     <div class="col-md-4">
       <label for="inputCity" class="form-label">City:</label>
       <input type="text" class="form-control" id="inputCity" placeholder="City">
