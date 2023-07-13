@@ -2,7 +2,7 @@
 <!-- nagireddy date:13/07/2023 validation to done -->
 
 <div class="p-3 mb-2 bg-secondary text-white">
-    <form class="row g-3" >
+    <form class="row g-3"  >
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Email:</label>
       <input type="email" class="form-control" id="inputEmail4" placeholder="Enter Valid Email" >
@@ -13,22 +13,26 @@
     </div>
     <div class="col-6">
       <label for="inputAddress" class="form-label"> Present Address: </label>
-      <input type="text" class="form-control" #addressValidation id="inputAddress" placeholder="Enter Present Address ">
-    </div>
-    <div
+      <input type="text" class="form-control" [(ngModel)]="PresentAddress" #addressValidation="ngModel" placeholder="Enter Present Address ">
+      <span
 
-    *ngIf="addressValidation.touched && addressValidation.invalid" style="color:red;"> Address required*</div>
-
-      </div>
+      *ngIf="addressValidation.touched && addressValidation.invalid" style="color:red;"> Address required*
+    </span>
+  
+        </div>
+   
+   
     <div class="col-6">
       <label for="inputAddress2" class="form-label"> Permanent Address: </label>
-      <input type="text" class="form-control" id="inputAddress2" #PermanentaddressValidation placeholder="Enter Permanent Address">
-    </div>
-    <div
+      <input type="text" class="form-control" id="inputAddress2" [(ngModel)]="PermanentAddress" #PermanentaddressValidation="ngModel" placeholder="Enter Permanent Address">
+      <span
 
-    *ngIf="PermanentaddressValidation.touched && Permanent addressValidation.invalid" style="color:red;"> Full Name is required*</div>
+    *ngIf="PermanentaddressValidation.touched && PermanentaddressValidation.invalid" style="color:red;"> Full Name is required*
+    </span>
 
       </div>
+    
+    
     <div class="col-md-4">
       <label for="inputCity" class="form-label">City:</label>
       <input type="text" class="form-control" id="inputCity" placeholder="City">
