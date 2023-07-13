@@ -14,13 +14,14 @@ export class AppComponent {
   Pincode:string="";
   Password:any="";
   Email:any="";
-
+ 
 users:any={};
   formValidation: any;
+  signupForm: any;
 
   Onsubmit(){
-   alert("data saved");
+
   }
-  
+
 }
 
