@@ -27,7 +27,15 @@ box-shadow: 5px 10px #888888;
     justify-content: center;
     margin-left: 50%;
     width: 50%;
- 
-   
-  
+}
+
+input.ng-invalid.ng-touched{
+    outline: 0.2rem solid red;
+}
+input.ng-valid{
+    outline: 0.2rem solid green;
+}
+.error{
+    color: red;
+    font-size: 0.8rem;
 }

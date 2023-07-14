@@ -1,75 +1,129 @@
 <!-- Ranga date:13/07/2023 Form Template  done -->
 <!-- nagireddy date:13/07/2023 validation to done -->
 <!-- <form #signupForm="ngForm" > --><br>
-<div class="p-3 mb-2 " > 
+<div class="p-3 mb-2 ">
   <div class="container">
-    <form class="row g-3  "  #signupForm="ngForm" id="top"  >
+    <form class="row g-3  " #signupForm="ngForm" id="top">
       <h1 style="font-weight: 500%;">Form Details</h1>
-    <div class="col-md-12">
-      <label for="inputEmail4" class="form-label"  > <b>Email:</b></label>
-      <input style="width: 50%;" type="email" class="form-control" [(ngModel)]="Email" name="email" pattern="[a-z0-9]+@[a-z.]*" #emailValidation ="ngModel" id="inputEmail4" placeholder="Enter Valid Email" required>
-      <div *ngIf="emailValidation.touched &&emailValidation.invalid" style="color:red;">Enter Valid Email</div>
-    </div>
-
-    <div class="col-md-12 ">
-      <label for="inputPassword4" class="form-label"><b>Password:</b></label>
-      <input style="width: 50%;" type="password" class="form-control" id="inputPassword4" name="password" [(ngModel)]="Password"  #paswordValidation="ngModel" placeholder="Enter Password" required>
-      <div *ngIf="paswordValidation.touched &&paswordValidation.invalid" style="color:red;">Enter Valid Password</div>
-    </div>
-    <div class="col-12">
-      <label for="inputAddress" class="form-label"> <b>Present Address: </b></label>
-      <input style="width: 50%;" type="text" class="form-control"  #addressValidation="ngModel" name="PresentAddress" [(ngModel)]="PresentAddress" placeholder="Enter Present Address " required="">
-      <div *ngIf="addressValidation.touched &&addressValidation.invalid" style="color:red;">Enter Valid Address</div>
+      <div class="col-md-12">
+        <label for="inputEmail4" class="form-label"> <b>Email:</b></label>
+        <input style="width: 50%;" type="email" class="form-control" [(ngModel)]="Email" name="email"
+          pattern="[a-z0-9]+@[a-z.]*" #emailValidation="ngModel" id="inputEmail4" placeholder="Enter Valid Email"
+          minlength="4" required>
+        <div class="error" *ngIf="emailValidation.invalid && emailValidation.touched">
+          <div *ngIf="emailValidation.errors?.['required']">Fill this field</div>
+          <!-- <div *ngIf="emailValidation.errors?.['pattern']">Only Alphabets and space </div> -->
+          <div *ngIf="emailValidation.errors?.['minlength']">
+            Minimum {{emailValidation.errors?.['minlength'].requiredLength}} characters.
+            Only {{emailValidation.errors?.['minlength'].actualLength}} characters typed.
+          </div>
         </div>
-   
-   
-    <div class="col-12">
-      <label for="inputAddress2" class="form-label"> <b>Permanent Address: </b></label>
-      <input style="width: 50%;" type="text" class="form-control" id="inputAddress2" [(ngModel)]="PermanentAddress" name="PermanentAddress" #PermanentaddressValidation="ngModel" placeholder="Enter Permanent Address" required>
-      <div *ngIf="PermanentaddressValidation.touched &&PermanentaddressValidation.invalid" style="color:red;">Enter Valid Address</div>
       </div>
-    
-    
-    <div class="col-md-12">
-      <label for="inputCity" class="form-label"><b>City:</b></label>
-      <input style="width: 50%;" type="text" class="form-control" id="inputCity" name="City"  [(ngModel)]="City"  placeholder="City" #CityValidation="ngModel" required>
-      <div *ngIf="CityValidation.touched &&CityValidation.invalid" style="color:red;">Enter Valid Address</div>
-    </div>
-
-
-    <div class="col-md-12">
-      <label for="inputState" class="form-label"><b>State:</b> </label>
-      <select style="width: 50%;" id="inputState" class="form-select"  [(ngModel)]="State" name="State"  #stateValidation="ngModel" required >
-        <option  selected> Select State</option>
-              <option value="Andhra Pradesh">Andhra Pradesh</option>
-              <option value="Karnataka">Karnataka</option>
-              <option value="Kerala">Kerala</option>
-              <option value="Goa">Goa</option>
-              <option value="Telangana">Telangana</option>
-              <option value="Tamil Nadu">Tamil Nadu</option>
-      </select>
-      <div *ngIf="stateValidation.touched &&stateValidation.invalid" style="color:red;"><b>Select State</b> </div>
-    </div>
-    <div class="col-md-12">
-      <label for="inputZip" class="form-label"><b>Pin Code:</b></label>
-      <input style="width: 50%;" type="number" class="form-control" id="inputZip" name="pincode"placeholder="Pincode" [(ngModel)]="Pincode"  #pinValidation="ngModel" required>
-      <div *ngIf="pinValidation.touched &&pinValidation.invalid" style="color:red;">Enter Pincode</div>
-    </div>
-    <div class="col-12">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck" name="checkbox" [(ngModel)]="checkbox" #checkValidation="ngModel"  required >
-      
-        <label class="form-check-label" for="gridCheck">
-          Check me out
-        </label>
-        <div *ngIf="checkValidation.touched &&checkValidation.invalid" style="color:red;"> Please Tick
+      <div class="col-md-12 ">
+        <label for="inputPassword4" class="form-label"><b>Password:</b></label>
+        <input style="width: 50%;" type="password" class="form-control" id="inputPassword4" name="password"
+          [(ngModel)]="Password" #paswordValidation="ngModel" placeholder="Enter Password" required minlength="5">
+        <div class="error" *ngIf="paswordValidation.invalid && paswordValidation.touched">
+          <div *ngIf="paswordValidation.errors?.['required']">Fill this field</div>
+          <!-- <div *ngIf="paswordValidation.errors?.['pattern']">Only Alphabets and space </div> -->
+          <div *ngIf="paswordValidation.errors?.['minlength']">
+            Minimum {{paswordValidation.errors?.['minlength'].requiredLength}} characters.
+            Only {{paswordValidation.errors?.['minlength'].actualLength}} characters typed.
+          </div>
         </div>
-        
       </div>
-    </div>
-  </form>
-  <div class="col-12">
-    <button type="button" (click)="Onsubmit();signupForm.reset()"  class="btn btn-primary" *ngIf="signupForm.valid" >Sign in</button>
+      <div class="col-12">
+        <label for="inputAddress" class="form-label"> <b>Present Address: </b></label>
+        <input style="width: 50%;" type="text" class="form-control" #addressValidation="ngModel" name="PresentAddress"
+          [(ngModel)]="PresentAddress" placeholder="Enter Present Address " minlength="5" required>
+        <div class="error" *ngIf="addressValidation.invalid && addressValidation.touched">
+          <div *ngIf="addressValidation.errors?.['required']">Fill this field</div>
+          <!-- <div *ngIf="addressValidation.errors?.['pattern']">Only Alphabets and space </div> -->
+          <div *ngIf="addressValidation.errors?.['minlength']">
+            Minimum {{addressValidation.errors?.['minlength'].requiredLength}} characters.
+            Only {{addressValidation.errors?.['minlength'].actualLength}} characters typed.
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-12">
+        <label for="inputAddress2" class="form-label"> <b>Permanent Address: </b></label>
+        <input style="width: 50%;" type="text" class="form-control" id="inputAddress2" [(ngModel)]="PermanentAddress"
+          name="PermanentAddress" #PermanentaddressValidation="ngModel" placeholder="Enter Permanent Address" minlength="5" required>
+        <div class="error" *ngIf="PermanentaddressValidation.invalid && PermanentaddressValidation.touched">
+          <div *ngIf="PermanentaddressValidation.errors?.['required']">Fill this field</div>
+          <!-- <div *ngIf="PermanentaddressValidation.errors?.['pattern']">Only Alphabets and space </div> -->
+          <div *ngIf="PermanentaddressValidation.errors?.['minlength']">
+            Minimum {{PermanentaddressValidation.errors?.['minlength'].requiredLength}} characters.
+            Only {{PermanentaddressValidation.errors?.['minlength'].actualLength}} characters typed.
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-12">
+        <label for="inputCity" class="form-label"><b>City:</b></label>
+        <input style="width: 50%;" type="text" class="form-control" id="inputCity" name="City" [(ngModel)]="City"
+          placeholder="City" #CityValidation="ngModel" minlength="5" required>
+        <div class="error" *ngIf="CityValidation.invalid && CityValidation.touched">
+          <div *ngIf="CityValidation.errors?.['required']">Fill this field</div>
+          <!-- <div *ngIf="CityValidation.errors?.['pattern']">Only Alphabets and space </div> -->
+          <div *ngIf="CityValidation.errors?.['minlength']">
+            Minimum {{CityValidation.errors?.['minlength'].requiredLength}} characters.
+            Only {{CityValidation.errors?.['minlength'].actualLength}} characters typed.
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-12">
+        <label for="inputState" class="form-label"><b>State:</b> </label>
+        <select style="width: 50%;" id="inputState" class="form-select" [(ngModel)]="State" name="State"
+          #stateValidation="ngModel" required>
+          <option selected> Select State</option>
+          <option value="Andhra Pradesh">Andhra Pradesh</option>
+          <option value="Karnataka">Karnataka</option>
+          <option value="Kerala">Kerala</option>
+          <option value="Goa">Goa</option>
+          <option value="Telangana">Telangana</option>
+          <option value="Tamil Nadu">Tamil Nadu</option>
+        </select>
+        <div *ngIf="stateValidation.touched &&stateValidation.invalid" class="error"><b>Select State</b>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <label for="inputZip" class="form-label"><b>Pin Code:</b></label>
+        <input style="width: 50%;" type="number" class="form-control" id="inputZip" name="pincode" placeholder="Pincode"
+          [(ngModel)]="Pincode" #pinValidation="ngModel" minlength="6" pattern="[0-9]*" required>
+        <div class="error" *ngIf="pinValidation.invalid && pinValidation.touched">
+          <div *ngIf="pinValidation.errors?.['required']">Fill this field</div>
+          <div *ngIf="pinValidation.errors?.['pattern']">Only Alphabets and space </div>
+          <div *ngIf="pinValidation.errors?.['minlength']">
+            Minimum {{pinValidation.errors?.['minlength'].requiredLength}} characters.
+            Only {{pinValidation.errors?.['minlength'].actualLength}} characters typed.
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck" name="checkbox" [(ngModel)]="checkbox"
+            #checkValidation="ngModel" required>
+
+          <label class="form-check-label" for="gridCheck">
+            Check me out
+          </label>
+          <div *ngIf="checkValidation.touched &&checkValidation.invalid" class="error"> Please Tick
+          </div>
+
+        </div>
+      </div>
+    </form>
+    <div class="col-12">
+      <button type="button" (click)="Onsubmit();signupForm.reset()" class="btn btn-primary"
+        *ngIf="signupForm.valid">Sign in</button>
     </div>
   </div>
 </div>
